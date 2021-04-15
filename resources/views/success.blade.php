@@ -62,6 +62,10 @@ body {
 .bs-example {
     margin: 20px;
 }
+.nav li a{
+    padding: 15px;
+    margin:15px;
+}
 </style>
 </head>
 <body>
@@ -79,6 +83,13 @@ body {
       </li>
       </ul>
           </div>
+
+          <ul class="nav navbar-nav">
+          <li><a href="locale/en">EN</a></li>
+          <li><a href="locale/ru">RU</a></li>
+          <li><a href="locale/kz">KZ</a></li>
+
+        </ul>
 
         </nav>
 <div class="container-lg">
@@ -144,6 +155,13 @@ body {
 						<button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> @lang('lang.send')</button>
 					</div>            
 				</form>
+                <script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
 			</div>
 		</div>
 	</div>
