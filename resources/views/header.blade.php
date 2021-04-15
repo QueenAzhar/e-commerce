@@ -16,33 +16,42 @@ if(Session::has('user'))
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">E-Comm</a>
+        <a class="navbar-brand" href="/">@lang('lang.azhar')</a>
       </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="/myorders">Orders</a></li>
+          <li class="active"><a href="#">@lang('lang.home')</a></li>
+          <li><a href="/myorders">@lang('lang.orders')</a></li>
+          <li><a href="email">@lang('lang.contact_us')</a></li>
+
         </ul>
         <form action="/search" class="navbar-form navbar-left">
           <div class="form-group">
-            <input type="text" name="query" class="form-control search-box" placeholder="Search">
+            <input type="text" name="query" class="form-control search-box" placeholder="@lang('lang.search')">
           </div>
-          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-default">@lang('lang.search')</button>
         </form>
+        <ul class="nav navbar-nav">
+          <li><a href="locale/en">EN</a></li>
+          <li><a href="locale/ru">RU</a></li>
+          <li><a href="locale/kz">KZ</a></li>
+
+        </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/cartlist">cart({{$total}})</a></li>
+          <li><a href="/cartlist">@lang('lang.cart')({{$total}})</a></li>
           @if(Session::has('user'))
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/logout">Logout</a></li>
+              <li><a href="/logout">@lang('lang.logout')</a></li>
             </ul>
           </li>
           @else
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">@lang('lang.login')</a></li>
+          <li><a href="/register">@lang('lang.register')</a></li>
           @endif
         </ul>
       </div><!-- /.navbar-collapse -->

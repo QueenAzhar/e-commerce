@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,8 @@ Route::get('/logout', function () {
     Session::forget('user');
     return redirect('login');
 });
-
+Route::view('/register','register');
+Route::post("/register",[UserController::class,'register']);
 Route::post("/login",[UserController::class,'login']);
 Route::get("/",[ProductController::class,'index']);
 Route::get("detail/{id}",[ProductController::class,'detail']);
@@ -35,3 +37,14 @@ Route::get("removecart/{id}",[ProductController::class,'removeCart']);
 Route::get("ordernow",[ProductController::class,'orderNow']); 
 Route::post("orderplace",[ProductController::class,'orderPlace']);
 Route::get("myorders",[ProductController::class,'myOrders']);
+
+
+Route::get('email', 'App\Http\Controllers\EmailController@create');
+
+Route::post('email', 'App\Http\Controllers\EmailController@sendEmail')->name('send');
+
+Route::get('locale/{locale}',function($locale){
+    Session::put('locale',$locale);
+    return redirect()->back();
+
+});
